@@ -57,5 +57,11 @@
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
     <orderEntry type="module" module-name="digital-commerce-core-test-war" />
+    <orderEntry type="library" name="Maven: io.probedock.rt.client:probedock-rt-itf:0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.probedock.rt.client:probedock-rt-java:0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.nkzawa:socket.io-client:0.4.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.nkzawa:engine.io-client:0.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.java-websocket:Java-WebSocket:1.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
   </component>
 </module>

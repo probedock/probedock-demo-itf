@@ -80,9 +80,5 @@
 			<groupId>io.probedock.client</groupId>
 			<artifactId>probedock-itf</artifactId>
 		</dependency>
-		<!--<dependency>
-			<groupId>io.probedock.rt.client</groupId>
-			<artifactId>probedock-rt-itf</artifactId>
-		</dependency>-->
 	</dependencies>
 </project>

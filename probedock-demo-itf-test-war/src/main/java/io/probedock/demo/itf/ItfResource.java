@@ -1,7 +1,7 @@
 package io.probedock.demo.itf;
 
 import io.probedock.jee.itf.TestController;
-import io.probedock.rt.itf.rest.ProbeDockAbstractTestResource;
+import io.probedock.rt.client.itf.ProbeDockRTAbstractTestResource;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -14,7 +14,7 @@ import javax.ws.rs.Path;
  */
 @Stateless
 @Path("start")
-public class ItfResource extends ProbeDockAbstractTestResource {
+public class ItfResource extends ProbeDockRTAbstractTestResource {
 	@EJB
 	private DemoTestController demoTestController;
 	
