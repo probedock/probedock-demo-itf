@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+	<appender name="stdOut" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="io.probedock.demo" level="TRACE" />
+	<logger name="io.probedock.rt.client" level="WARN" />
+	<logger name="io.probedock.client" level="INFO" />
+	<logger name="org.apache" level="WARN" />
+	<logger name="com.sun.jersey" level="WARN" />
+
+	<root level="TRACE">
+		<appender-ref ref="stdOut" />
+	</root>
+</configuration>

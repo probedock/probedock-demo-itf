@@ -1,0 +1,5 @@
+project:
+  apiId: 
+  version: 1.0.0-SNAPSHOT
+  
+server: demo.probedock.io

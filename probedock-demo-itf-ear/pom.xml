@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>probedock-demo-itf</artifactId>
+        <groupId>io.probedock.demo</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>probedock-demo-itf-ear</artifactId>
+    <packaging>ear</packaging>
+    <name>Probe Dock Demo ITF EAR</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <modules>
+                        <ejbModule>
+                            <groupId>io.probedock.demo</groupId>
+                            <artifactId>probedock-demo-itf-ejb</artifactId>
+                            <unpack>true</unpack>
+                        </ejbModule>
+                        <ejbModule>
+                            <groupId>io.probedock.demo</groupId>
+                            <artifactId>probedock-demo-itf-test-ejb</artifactId>
+                            <unpack>true</unpack>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>io.probedock.demo</groupId>
+                            <artifactId>probedock-demo-itf-war</artifactId>
+                            <contextRoot>/itf-demo</contextRoot>
+                            <unpack>true</unpack>
+                        </webModule>
+                        <webModule>
+                            <groupId>io.probedock.demo</groupId>
+                            <artifactId>probedock-demo-itf-test-war</artifactId>
+                            <contextRoot>/itf-demo-test</contextRoot>
+                            <unpack>true</unpack>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.glassfish.embedded</groupId>
+                <artifactId>maven-embedded-glassfish-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>glassfishDeploy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.probedock.demo</groupId>
+            <artifactId>probedock-demo-itf-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>io.probedock.demo</groupId>
+            <artifactId>probedock-demo-itf-war</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>io.probedock.demo</groupId>
+            <artifactId>probedock-demo-itf-war</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>io.probedock.demo</groupId>
+            <artifactId>probedock-demo-itf-test-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>io.probedock.demo</groupId>
+            <artifactId>probedock-demo-itf-test-war</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>io.probedock.demo</groupId>
+            <artifactId>probedock-demo-itf-test-war</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+</project>
