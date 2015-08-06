@@ -1,5 +1,6 @@
 package io.probedock.demo.itf.service;
 
+import io.probedock.demo.itf.to.OperationTO;
 import io.probedock.demo.itf.to.ResultTO;
 
 import javax.ejb.Local;
@@ -11,39 +12,12 @@ import javax.ejb.Local;
  */
 @Local
 public interface CalculatorService {
-	/**
-	 * Addition
-	 *
-	 * @param left
-	 * @param right
-	 * @return left + right
-	 */
-	ResultTO add(int left, int right);
-
-	/**
-	 * Subtraction
-	 *
-	 * @param left
-	 * @param right
-	 * @return left - right
-	 */
-	ResultTO sub(int left, int right);
-
-	/**
-	 * Multiplication
-	 *
-	 * @param left
-	 * @param right
-	 * @return left * right
-	 */
-	ResultTO mul(int left, int right);
-
-	/**
-	 * Division
-	 *
-	 * @param left
-	 * @param right
-	 * @return left / right
-	 */
-	ResultTO div(int left, int right);
+    /**
+     * Process an operation and return the computed result
+     *
+     * @param operation The operation to process
+     * @return The result
+     * @throws CalculationException When processing the operation is not possible
+     */
+    ResultTO process(OperationTO operation) throws CalculationException;
 }

@@ -1,7 +1,9 @@
 package io.probedock.demo.itf.service;
 
+import io.probedock.demo.itf.to.OperationTO;
 import io.probedock.demo.itf.to.ResultTO;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -11,28 +13,16 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class CalculatorServiceImpl implements CalculatorService {
-    @Override
-    public ResultTO add(int left, int right) {
-        return new ResultTO(left + right);
-    }
+    @EJB
+    private OperationConverterService operationConverterService;
 
     @Override
-    public ResultTO sub(int left, int right) {
-        return new ResultTO(left - right);
-    }
-
-    @Override
-    public ResultTO mul(int left, int right) {
-        return new ResultTO(left * right);
-    }
-
-    @Override
-    public ResultTO div(int left, int right) {
-        if (right == 0) {
-            throw new IllegalArgumentException("Right operand must be different from 0.");
+    public ResultTO process(OperationTO operation) throws CalculationException {
+        try {
+            return new ResultTO(operationConverterService.convert(operation).process());
         }
-        else {
-            return new ResultTO(left / right);
+        catch (IllegalStateException ise) {
+            throw new CalculationException(ise);
         }
     }
 }

@@ -1,6 +1,7 @@
 package io.probedock.demo.itf;
 
 import io.probedock.demo.itf.service.CalculatorServiceTest;
+import io.probedock.demo.itf.service.OperationConverterServiceTest;
 import io.probedock.jee.itf.AbstractTestController;
 
 import javax.ejb.EJB;
@@ -16,4 +17,7 @@ import javax.ejb.TransactionManagementType;
 public class DemoTestControllerImpl extends AbstractTestController implements DemoTestController {
 	@EJB
 	public CalculatorServiceTest calculatorServiceTest;
+
+	@EJB
+	public OperationConverterServiceTest operationConverterServiceTest;
 }

@@ -1,5 +1,6 @@
 package io.probedock.demo.itf.rest;
 
+import io.probedock.demo.itf.service.CalculationException;
 import io.probedock.demo.itf.service.CalculatorService;
 import io.probedock.demo.itf.to.ErrorTO;
 import io.probedock.demo.itf.to.OperationTO;
@@ -28,23 +29,11 @@ public class CalculatorResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response requestToken(OperationTO operation){
-
-		switch (operation.getOp()) {
-			case "add":
-				return Response.ok(calculatorService.add(operation.getLeft(), operation.getRight())).build();
-			case "sub":
-				return Response.ok(calculatorService.sub(operation.getLeft(), operation.getRight())).build();
-			case "mul":
-				return Response.ok(calculatorService.mul(operation.getLeft(), operation.getRight())).build();
-			case "div":
-				try {
-					return Response.ok(calculatorService.div(operation.getLeft(), operation.getRight())).build();
-				}
-				catch (IllegalArgumentException iae) {
-					return Response.status(422).entity(new ErrorTO(iae.getMessage())).build();
-				}
-			default:
-				return Response.status(404).entity(new ErrorTO("Operation not found")).build();
+		try {
+			return Response.ok(calculatorService.process(operation)).build();
+		}
+		catch (CalculationException ce) {
+			return Response.status(422).entity(new ErrorTO(ce.getMessage())).build();
 		}
 	}
 }
